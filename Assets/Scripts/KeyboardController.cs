@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class KeyboardController : MonoBehaviour {
-	public float speed = 10.0f;
+	public float speed = 100.0f;
 	public Vector3 lastPos;
 	// Use this for initialization
 	void Start () {
@@ -16,31 +16,31 @@ public class KeyboardController : MonoBehaviour {
 
 
 	void FixedUpdate(){
-				float y_val = Input.GetAxis ("Vertical") * speed;
-				float x_val = Input.GetAxis ("Horizontal") * speed;
+		//float y_val = Input.GetAxis ("Vertical") * speed;
+		//float x_val = Input.GetAxis ("Horizontal") * speed;
 
-				transform.Translate (x_val, y_val, 0);
+		//transform.Translate (x_val, y_val, 0);
+		Vector2 forcing = new Vector2 (Input.GetAxis ("Horizontal") * speed, Input.GetAxis ("Vertical") * speed);
+		rigidbody2D.AddForce (forcing);
 
-				Animator animate = GetComponent<Animator> ();
+		Animator animate = GetComponent<Animator>();
 
-				Vector3 curpos = transform.position;
+		Vector3 curpos = transform.position;
 
-				if (curpos != lastPos) {
-						animate.SetBool ("isMoving", true);
-				} else {
-						animate.SetBool ("isMoving", false);
-				}				
-				lastPos = curpos;
+		if(curpos != lastPos) {
+			animate.SetBool ("isMoving", true);
+		} else {
+			animate.SetBool ("isMoving", false);
+		}
+		lastPos = curpos;
 
-				//animate.animation ["SwingSword"].wrapMode = WrapMode.Once;
-				if (Input.GetButtonDown ("Fire1")) {
-						print ("Mutha...");
-						animate.SetBool("shouldSwing", true);
+		float doSwingSword = Input.GetAxisRaw ("Fire1");
+		print (doSwingSword);
+		if (doSwingSword != 0.0f) {
+						animate.SetBool ("shouldSwing", true);
 				} else {
 						animate.SetBool ("shouldSwing", false);
 				}
-
-
 
 
 	}

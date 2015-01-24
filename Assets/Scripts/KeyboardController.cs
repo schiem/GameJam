@@ -63,18 +63,23 @@ public class KeyboardController : MonoBehaviour {
 						animate.SetBool ("isMoving", false);
 				}
 				lastPos = curpos;
-		
+				
+				if(!animate.GetCurrentAnimatorStateInfo(0).IsName ("SwingSword"))
+				{
+					animate.SetBool ("shouldSwing", false);
+					swinging = false;
+				}
 				float doSwingSword = Input.GetAxisRaw ("Fire1");
-				print (doSwingSword);
 				if (doSwingSword != 0.0f) {
-					swinging = true; 
+					if(swinging != true)
+					{
+						swinging = true; 
 						animate.SetBool ("shouldSwing", true);
-		} else {
-						swinging = false;
-						animate.SetBool ("shouldSwing", false);
+					}
+				} 
 
+	
 		}
-	}
 
 	void UpdateCamera()
 	{

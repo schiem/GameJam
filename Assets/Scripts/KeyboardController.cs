@@ -31,6 +31,13 @@ public class KeyboardController : MonoBehaviour {
 			animate.SetBool ("isMoving", false);
 		}
 		lastPos = curpos;
+
+		float doSwingSword = Input.GetAxisRaw ("Fire1");
+		if (doSwingSword != 0.0f) {
+						animate.Play ("SwingSword");
+				}
+
+
 	}
 
 }

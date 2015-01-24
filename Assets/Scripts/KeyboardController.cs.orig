@@ -4,9 +4,12 @@ using System.Collections;
 public class KeyboardController : MonoBehaviour {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
+<<<<<<< HEAD
 	public bool swinging;
+=======
 	public int health = 100;
 	public MonoBehaviour textBox;
+>>>>>>> 323f566ec883354a83868eee442cdd8695210ab5
 
 	// Use this for initialization
 	void Start () {
@@ -41,10 +44,6 @@ public class KeyboardController : MonoBehaviour {
 
 	void GetKeys() {
 		if (Input.GetKeyDown ("escape")) {
-			Object[] objects = FindObjectsOfType(typeof(GameObject));
-			foreach (GameObject go in objects) {
-				go.SendMessage("onPause", SendMessageOptions.DontRequireReceiver);
-			}
 			Debug.Log ("escape pressed.");
 			((DescriptionBoxController) textBox).isAnimating = true;
 			((DescriptionBoxController) textBox).popUpStartTime = Time.time;
@@ -53,6 +52,7 @@ public class KeyboardController : MonoBehaviour {
 
 	void UpdateAnimations()
 	{
+<<<<<<< HEAD
 				Animator animate = GetComponent<Animator> ();
 		
 				Vector3 curpos = transform.position;
@@ -68,13 +68,29 @@ public class KeyboardController : MonoBehaviour {
 				print (doSwingSword);
 				if (doSwingSword != 0.0f) {
 					swinging = true; 
+=======
+		Animator animate = GetComponent<Animator> ();
+
+		Vector3 curpos = transform.position;
+
+		if (curpos != lastPos) {
+				animate.SetBool ("isMoving", true);
+		} else {
+				animate.SetBool ("isMoving", false);
+		}
+		lastPos = curpos;
+
+		float doSwingSword = Input.GetAxisRaw ("Fire1");
+		print (doSwingSword);
+		if (doSwingSword != 0.0f) {
+>>>>>>> 323f566ec883354a83868eee442cdd8695210ab5
 						animate.SetBool ("shouldSwing", true);
 		} else {
 						swinging = false;
 						animate.SetBool ("shouldSwing", false);
+		}
 
 		}
-	}
 
 	void UpdateCamera()
 	{

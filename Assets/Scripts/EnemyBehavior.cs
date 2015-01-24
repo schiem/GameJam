@@ -5,7 +5,9 @@ public class EnemyBehavior : MonoBehaviour {
 	public float maxSpeed = 3.0f;
 	public KeyboardController key_control;
 	public GameObject playerPtr;
-	public int health = 100;
+	public int health;
+	public int attack;
+	public Sprite dead_sprite;
 	// Use this for initialization
 	void Start () {
 		
@@ -32,7 +34,7 @@ public class EnemyBehavior : MonoBehaviour {
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
 			knockBack (force);
-			takeDamage(10);
+			takeDamage(attack);
 		}
 	}
 	
@@ -43,7 +45,7 @@ public class EnemyBehavior : MonoBehaviour {
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
 			knockBack (force);
-			takeDamage(10);
+			takeDamage(attack);
 		}
 	}
 	
@@ -76,7 +78,7 @@ public class EnemyBehavior : MonoBehaviour {
 		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		collider2D.enabled = false;
 		GameObject.Destroy(rigidbody2D);
-		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Enemy/stingerdead01");
+		GetComponent<SpriteRenderer>().sprite = dead_sprite;
 		//collider2.enabled = false;
 		GameObject.Destroy(this);
 	}

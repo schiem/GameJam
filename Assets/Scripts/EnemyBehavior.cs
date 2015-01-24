@@ -24,7 +24,6 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D coll) {
-		KeyboardController controller = GetComponent<KeyboardController>();
 		if (coll.gameObject.tag == "MainChar") {
 			Vector2 otherpos = coll.gameObject.transform.position;
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);

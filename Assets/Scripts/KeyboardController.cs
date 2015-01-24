@@ -16,29 +16,31 @@ public class KeyboardController : MonoBehaviour {
 
 
 	void FixedUpdate(){
-		float y_val = Input.GetAxis ("Vertical") * speed;
-		float x_val = Input.GetAxis ("Horizontal") * speed;
+				float y_val = Input.GetAxis ("Vertical") * speed;
+				float x_val = Input.GetAxis ("Horizontal") * speed;
 
-		transform.Translate (x_val, y_val, 0);
+				transform.Translate (x_val, y_val, 0);
 
-		Animator animate = GetComponent<Animator>();
+				Animator animate = GetComponent<Animator> ();
 
-		Vector3 curpos = transform.position;
+				Vector3 curpos = transform.position;
 
-		if(curpos != lastPos) {
-			animate.SetBool ("isMoving", true);
-		} else {
-			animate.SetBool ("isMoving", false);
-		}
-		lastPos = curpos;
+				if (curpos != lastPos) {
+						animate.SetBool ("isMoving", true);
+				} else {
+						animate.SetBool ("isMoving", false);
+				}				
+				lastPos = curpos;
 
-		float doSwingSword = Input.GetAxisRaw ("Fire1");
-		print (doSwingSword);
-		if (doSwingSword != 0.0f) {
-						animate.SetBool ("shouldSwing", true);
+				//animate.animation ["SwingSword"].wrapMode = WrapMode.Once;
+				if (Input.GetButtonDown ("Fire1")) {
+						print ("Mutha...");
+						animate.SetBool("shouldSwing", true);
 				} else {
 						animate.SetBool ("shouldSwing", false);
 				}
+
+
 
 
 	}

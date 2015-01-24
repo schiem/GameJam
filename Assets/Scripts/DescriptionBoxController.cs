@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections;
 
 public class DescriptionBoxController : MonoBehaviour {
+	public TextMesh theText;
 	public float popUpStartTime;
 	public bool isAnimating = false;
 	public bool isDoneAnimating = false;
@@ -57,5 +58,9 @@ public class DescriptionBoxController : MonoBehaviour {
 		Vector3 transformed = cam.ScreenToWorldPoint (newpos);
 		transformed = new Vector3 (transformed.x, transformed.y, 0);
 		transform.position = transformed;
+	}
+
+	void doMessage (string Message) {
+		TextMesh tm = (TextMesh)Instantiate (theText);
 	}
 }

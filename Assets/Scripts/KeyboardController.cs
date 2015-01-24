@@ -70,6 +70,7 @@ public class KeyboardController : MonoBehaviour {
 						animate.SetBool ("shouldSwing", false);
 
 		}
+	}
 
 	void UpdateCamera()
 	{

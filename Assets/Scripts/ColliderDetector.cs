@@ -11,6 +11,11 @@ public class ColliderDetector : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
+	
+	void FixedUpdate()
+	{
+		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+		}
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		KeyboardController controller = GetComponent<KeyboardController>();
@@ -37,15 +42,15 @@ public class ColliderDetector : MonoBehaviour {
 
 	void knockBack(Vector2 direction)
 	{
+		renderer.material.color = Color.red;
 		rigidbody2D.AddForce (direction);
 	}
 
 	void takeDamage(int amount)
 	{
 		health = health - amount;
+		print(health);
 		if (health <= 0) {
-			print ("Here!");
-
 			Die ();
 			}
 		}

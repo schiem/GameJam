@@ -5,7 +5,6 @@ public class KeyboardController : MonoBehaviour {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
 	public bool swinging;
-	public int health = 100;
 	public MonoBehaviour textBox;
 
 	// Use this for initialization
@@ -20,7 +19,8 @@ public class KeyboardController : MonoBehaviour {
 
 
 	void FixedUpdate(){
-
+	
+		
 		Vector2 forcing = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
 		float current_magnitude = forcing.magnitude;
 		if (current_magnitude > 1) {

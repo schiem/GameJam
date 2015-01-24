@@ -41,6 +41,11 @@ public class KeyboardController : MonoBehaviour {
 
 	void GetKeys() {
 		if (Input.GetKeyDown ("escape")) {
+			Object[] objects = FindObjectsOfType(typeof(GameObject));
+			foreach (GameObject go in objects) {
+				go.SendMessage("onPause", SendMessageOptions.DontRequireReceiver);
+			}
+			foreach
 			Debug.Log ("escape pressed.");
 			((DescriptionBoxController) textBox).isAnimating = true;
 			((DescriptionBoxController) textBox).popUpStartTime = Time.time;

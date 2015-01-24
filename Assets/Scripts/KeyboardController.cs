@@ -5,6 +5,8 @@ public class KeyboardController : MonoBehaviour {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
 	public bool swinging;
+	public int health = 100;
+	public MonoBehaviour textBox;
 
 	// Use this for initialization
 	void Start () {
@@ -30,10 +32,19 @@ public class KeyboardController : MonoBehaviour {
 
 		rigidbody2D.AddForce (forcing);
 
+		GetKeys ();
 		UpdateCamera();
 		UpdateAnimations ();
 
 
+	}
+
+	void GetKeys() {
+		if (Input.GetKeyDown ("escape")) {
+			Debug.Log ("escape pressed.");
+			((DescriptionBoxController) textBox).isAnimating = true;
+			((DescriptionBoxController) textBox).popUpStartTime = Time.time;
+		}
 	}
 
 	void UpdateAnimations()
@@ -57,7 +68,6 @@ public class KeyboardController : MonoBehaviour {
 		} else {
 						swinging = false;
 						animate.SetBool ("shouldSwing", false);
-		}
 
 		}
 

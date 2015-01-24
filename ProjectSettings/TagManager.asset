@@ -43,3 +43,19 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: UI
+    userID: 4
+    uniqueID: 3818335547
+    locked: 0
+  - name: Actors
+    userID: 1
+    uniqueID: 977717605
+    locked: 0
+  - name: Props
+    userID: 3
+    uniqueID: 3611786505
+    locked: 0
+  - name: Floor
+    userID: 2
+    uniqueID: 257323905
+    locked: 0

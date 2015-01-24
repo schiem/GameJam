@@ -84,8 +84,6 @@ GameObject:
   - 4: {fileID: 137876917}
   - 212: {fileID: 137876916}
   - 114: {fileID: 137876918}
-  - 95: {fileID: 137876919}
-  - 50: {fileID: 137876920}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -138,37 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ff08f04d0e047649a00b54c713c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: .100000001
---- !u!95 &137876919
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 137876915}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a4fb01fdf8a34699a2bfa0583a4ee2d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!50 &137876920
-Rigidbody2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 137876915}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  speed: .400000006
+  lastPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1340997760
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1544234516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.97871637, y: -1.13966966, z: 0}
+  m_LocalPosition: {x: 1.05999994, y: .140000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

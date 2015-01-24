@@ -25,7 +25,7 @@ public class DescriptionBoxController : MonoBehaviour {
 			popUp();
 		} else if (isDoneAnimating) {
 			renderer.enabled = true;
-			Vector3 newpos = cam.ScreenToWorldPoint(new Vector3(screenWidth / 2, screenHeight / 4, 0));
+			Vector3 newpos = cam.ScreenToWorldPoint(new Vector3(screenWidth / 2, screenHeight / 5, 0));
 			newpos = new Vector3(newpos.x, newpos.y, 0);
 			transform.position = newpos;
 		}
@@ -36,7 +36,7 @@ public class DescriptionBoxController : MonoBehaviour {
 
 	float posFunc(float t, float target) {
 		float logScale = Screen.height / 2;
-		float calc = Mathf.Log (t * 1.1f) * logScale;
+		float calc = (-10 / t) + (target) + 10;
 		if (calc < target) {
 			return calc;
 		} else {
@@ -48,7 +48,7 @@ public class DescriptionBoxController : MonoBehaviour {
 
 	void popUp () {
 		float targetHeight = screenHeight;
-		float vert = posFunc ((Time.time) - popUpStartTime, screenHeight / 4);
+		float vert = posFunc ((Time.time) - popUpStartTime, screenHeight / 5);
 		Vector3 newpos = new Vector3 (screenWidth / 2, vert, 0);
 		Vector3 transformed = cam.ScreenToWorldPoint (newpos);
 		transformed = new Vector3 (transformed.x, transformed.y, 0);

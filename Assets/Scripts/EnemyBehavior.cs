@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyBehavior : MonoBehaviour {
 	public float maxSpeed = 3.0f;
+	public KeyboardController key_control;
 	public GameObject playerPtr;
 	public int health = 100;
 	// Use this for initialization
@@ -24,7 +25,19 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "MainChar") {
+		
+		if (coll.gameObject.tag == "Sword" && key_control.swinging) {
+			Vector2 otherpos = coll.gameObject.transform.position;
+			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+			knockBack (force);
+			takeDamage(10);
+		}
+	}
+	
+	void OnTriggerStay2D(Collider2D coll) {
+		
+		if (coll.gameObject.tag == "Sword" && key_control.swinging) {
 			Vector2 otherpos = coll.gameObject.transform.position;
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
@@ -60,6 +73,7 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	void Die()
 	{
+		GameObject.Destroy(this);
 	}
 	
 

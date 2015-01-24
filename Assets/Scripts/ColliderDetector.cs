@@ -15,7 +15,7 @@ public class ColliderDetector : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		KeyboardController controller = GetComponent<KeyboardController>();
 		
-		if (coll.gameObject.tag == "Enemy" && !controller.swinging) {
+		if (coll.gameObject.tag == "Enemy") {
 			Vector2 otherpos = coll.gameObject.transform.position;
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
@@ -23,12 +23,10 @@ public class ColliderDetector : MonoBehaviour {
 			takeDamage(10);
 		}
 	}
-	
-	/*
-	void OnTriggerStay2D(Collider2D coll){
+	void OnTriggerStay2D(Collider2D coll) {
 		KeyboardController controller = GetComponent<KeyboardController>();
 		
-		if (coll.gameObject.tag == "Enemy" && !controller.swinging) {
+		if (coll.gameObject.tag == "Enemy") {
 			Vector2 otherpos = coll.gameObject.transform.position;
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
@@ -37,8 +35,6 @@ public class ColliderDetector : MonoBehaviour {
 		}
 	}
 
-	*/
-	
 	void knockBack(Vector2 direction)
 	{
 		rigidbody2D.AddForce (direction);

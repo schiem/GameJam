@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyBehavior : MonoBehaviour {
+public class EnemyBehavior : Pausable {
 	public float maxSpeed = 3.0f;
 	public KeyboardController key_control;
 	public GameObject playerPtr;
@@ -9,6 +9,26 @@ public class EnemyBehavior : MonoBehaviour {
 	public int attack;
 	public Sprite dead_sprite;
 	// Use this for initialization
+
+	public bool paused = false;
+
+	private Vector2 savedVelocity;
+	private float savedAngularVelocity;
+
+	public override void onPause () {
+		savedVelocity = rigidbody2D.velocity;
+		savedAngularVelocity = rigidbody2D.angularVelocity;
+		rigidbody2D.isKinematic = true;
+		paused = true;
+	}
+
+	public override void onResume () {
+		rigidbody2D.isKinematic = false;
+		rigidbody2D.AddForce (savedVelocity, ForceMode2D.Impulse);
+		rigidbody2D.AddTorque (savedAngularVelocity, ForceMode2D.Impulse);
+		paused = false;
+	}
+	
 	void Start () {
 		
 	}
@@ -17,8 +37,10 @@ public class EnemyBehavior : MonoBehaviour {
 		//Debug.Log (transform.childCount);
 		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		var step = maxSpeed * Time.deltaTime;
-		transform.position = Vector2.MoveTowards (transform.position, playerPtr.transform.position, step);
-		FaceCharacter ();
+		if (!paused) {
+			transform.position = Vector2.MoveTowards (transform.position, playerPtr.transform.position, step);
+			FaceCharacter ();
+		}
 
 	}
 

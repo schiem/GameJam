@@ -42,13 +42,18 @@ public class KeyboardController : MonoBehaviour {
 	void GetKeys() {
 		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
 		if (Input.GetKeyDown ("escape")) {
-			Object[] objects = FindObjectsOfType(typeof(GameObject));
-			foreach (GameObject go in objects) {
-				go.SendMessage("onPause", SendMessageOptions.DontRequireReceiver);
+			Object[] objects = FindObjectsOfType(typeof(Pausable));
+			foreach (var go in objects) {
+				((Pausable) go).onPause();
 			}
 			tbox.doMessage("The quick brown fox jumps over the lazy dog.");
 		}
 		if (Input.GetKeyDown ("return")) {
+			Object[] objects = FindObjectsOfType(typeof(Pausable));
+			foreach (var go in objects) {
+				((Pausable) go).onResume();
+			}
+
 			tbox.isDoneAnimating = false;
 			tbox.isAnimating = false;
 			tbox.Hide();

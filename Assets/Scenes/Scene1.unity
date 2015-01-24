@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: .100000001
+  lastPos: {x: 0, y: 0, z: 0}
 --- !u!95 &137876919
 Animator:
   serializedVersion: 3

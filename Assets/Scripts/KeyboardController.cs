@@ -4,7 +4,7 @@ using System.Collections;
 public class KeyboardController : MonoBehaviour {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
-	public int health = 100;
+	public bool swinging;
 
 	// Use this for initialization
 	void Start () {
@@ -52,8 +52,10 @@ public class KeyboardController : MonoBehaviour {
 				float doSwingSword = Input.GetAxisRaw ("Fire1");
 				print (doSwingSword);
 				if (doSwingSword != 0.0f) {
+					swinging = true; 
 						animate.SetBool ("shouldSwing", true);
 		} else {
+						swinging = false;
 						animate.SetBool ("shouldSwing", false);
 		}
 

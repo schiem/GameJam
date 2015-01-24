@@ -46,7 +46,7 @@ public class KeyboardController : MonoBehaviour {
 			foreach (GameObject go in objects) {
 				go.SendMessage("onPause", SendMessageOptions.DontRequireReceiver);
 			}
-			tbox.doMessage("The quick brown fox shat.");
+			tbox.doMessage("The quick brown fox jumps over the lazy dog.");
 		}
 		if (Input.GetKeyDown ("return")) {
 			tbox.isDoneAnimating = false;

@@ -18,6 +18,8 @@ public class DescriptionBoxController : MonoBehaviour {
 	private static float X_MARGIN = 0.25f;
 	private static float Y_MARGIN = -0.2f;
 
+	public int MAX_STRING_LENGTH = 31;
+
 
 
 	// Use this for initialization
@@ -96,6 +98,26 @@ public class DescriptionBoxController : MonoBehaviour {
 
 		textCopy = (TextMesh)Instantiate (theText, text_newPos, Quaternion.identity);
 		textCopy.renderer.enabled = true;
-		textCopy.text = message;
+		textCopy.text = splitMessageString(message);
+	}
+
+	public string splitMessageString(string message) {
+		List<string> words = new List<string> (message.Split (' '));
+		string newmessage = "";
+		int linelength = 0;
+		int nextlength;
+		foreach (string word in words) {
+			nextlength = linelength + word.Length + 1;
+			if(nextlength > MAX_STRING_LENGTH) {
+				newmessage+="\n";
+				linelength=word.Length + 1;
+				newmessage = (newmessage + word + " ");
+			} else {
+				newmessage = (newmessage + word + " ");
+				linelength = nextlength;
+			}
+		}
+
+		return newmessage;
 	}
 }

@@ -13,6 +13,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	void FixedUpdate () {
 		//Debug.Log (transform.childCount);
+		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		var step = maxSpeed * Time.deltaTime;
 		transform.position = Vector2.MoveTowards (transform.position, playerPtr.transform.position, step);
 		FaceCharacter ();
@@ -57,22 +58,26 @@ public class EnemyBehavior : MonoBehaviour {
 		}
 		
 	void knockBack(Vector2 direction)
-	{
+	{		
+		renderer.material.color = Color.red;
 		rigidbody2D.AddForce (direction);
 	}
 	
 	void takeDamage(int amount)
 	{
 		health = health - amount;
-		if (health <= 0) {
-			print ("Here!");
-			
+		if (health <= 0) {			
 			Die ();
 		}
 	}
 	
 	void Die()
 	{
+		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+		collider2D.enabled = false;
+		GameObject.Destroy(rigidbody2D);
+		GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Enemy/stingerdead01");
+		//collider2.enabled = false;
 		GameObject.Destroy(this);
 	}
 	

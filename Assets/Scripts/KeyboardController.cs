@@ -18,11 +18,16 @@ public class KeyboardController : MonoBehaviour {
 
 
 	void FixedUpdate(){
-		//float y_val = Input.GetAxis ("Vertical") * speed;
-		//float x_val = Input.GetAxis ("Horizontal") * speed;
 
-		//transform.Translate (x_val, y_val, 0);
-		Vector2 forcing = new Vector2 (Input.GetAxis ("Horizontal") * speed, Input.GetAxis ("Vertical") * speed);
+		Vector2 forcing = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
+		float current_magnitude = forcing.magnitude;
+		if (current_magnitude > 1) {
+			float ratio = (1 / current_magnitude);
+			forcing.Scale(new Vector2(ratio, ratio));
+		}
+
+		forcing *= speed;
+
 		rigidbody2D.AddForce (forcing);
 
 		UpdateCamera();
@@ -48,9 +53,9 @@ public class KeyboardController : MonoBehaviour {
 				print (doSwingSword);
 				if (doSwingSword != 0.0f) {
 						animate.SetBool ("shouldSwing", true);
-				} else {
+		} else {
 						animate.SetBool ("shouldSwing", false);
-				}
+		}
 
 		}
 

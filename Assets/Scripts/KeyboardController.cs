@@ -40,18 +40,15 @@ public class KeyboardController : MonoBehaviour {
 	}
 
 	void GetKeys() {
+		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
 		if (Input.GetKeyDown ("escape")) {
 			Object[] objects = FindObjectsOfType(typeof(GameObject));
 			foreach (GameObject go in objects) {
 				go.SendMessage("onPause", SendMessageOptions.DontRequireReceiver);
 			}
-			Debug.Log ("escape pressed.");
-			((DescriptionBoxController) textBox).isAnimating = true;
-			((DescriptionBoxController) textBox).popUpStartTime = Time.time;
+			tbox.doMessage("The quick brown fox shat.");
 		}
 		if (Input.GetKeyDown ("return")) {
-			Debug.Log ("return pressed.");
-			DescriptionBoxController tbox = (DescriptionBoxController) textBox;
 			tbox.isDoneAnimating = false;
 			tbox.isAnimating = false;
 			tbox.Hide();

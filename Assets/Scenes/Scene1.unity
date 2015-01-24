@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ff08f04d0e047649a00b54c713c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 120
+  speed: 280
   lastPos: {x: 0, y: 0, z: 0}
 --- !u!95 &137876919
 Animator:
@@ -162,7 +162,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 137876915}
   m_Mass: 1
-  m_LinearDrag: 20
+  m_LinearDrag: 40
   m_AngularDrag: .100000001
   m_GravityScale: 0
   m_FixedAngle: 0

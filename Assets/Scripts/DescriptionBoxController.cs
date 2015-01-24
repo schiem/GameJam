@@ -17,7 +17,11 @@ public class DescriptionBoxController : MonoBehaviour {
 		screenWidth = screenSize.x;
 		screenHeight = screenSize.y;
 	}
-	
+
+	public void Hide() {
+		renderer.enabled = false;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (isAnimating) {

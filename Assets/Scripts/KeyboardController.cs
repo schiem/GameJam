@@ -49,6 +49,13 @@ public class KeyboardController : MonoBehaviour {
 			((DescriptionBoxController) textBox).isAnimating = true;
 			((DescriptionBoxController) textBox).popUpStartTime = Time.time;
 		}
+		if (Input.GetKeyDown ("return")) {
+			Debug.Log ("return pressed.");
+			DescriptionBoxController tbox = (DescriptionBoxController) textBox;
+			tbox.isDoneAnimating = false;
+			tbox.isAnimating = false;
+			tbox.Hide();
+		}
 	}
 
 	void UpdateAnimations()
@@ -65,7 +72,7 @@ public class KeyboardController : MonoBehaviour {
 				lastPos = curpos;
 		
 				float doSwingSword = Input.GetAxisRaw ("Fire1");
-				print (doSwingSword);
+				//print (doSwingSword);
 				if (doSwingSword != 0.0f) {
 					swinging = true; 
 						animate.SetBool ("shouldSwing", true);

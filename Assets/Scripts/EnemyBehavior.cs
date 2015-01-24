@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		Debug.Log (transform.childCount);
+		//Debug.Log (transform.childCount);
 		var step = maxSpeed * Time.deltaTime;
 		transform.position = Vector2.MoveTowards (transform.position, playerPtr.transform.position, step);
 		FaceCharacter ();

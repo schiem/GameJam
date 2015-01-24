@@ -60,34 +60,34 @@ public class KeyboardController : MonoBehaviour {
 
 	void UpdateAnimations()
 	{
-				Animator animate = GetComponent<Animator> ();
+		Animator animate = GetComponent<Animator> ();
 		
-				Vector3 curpos = transform.position;
+		Vector3 curpos = transform.position;
 		
-				if (curpos != lastPos) {
-						animate.SetBool ("isMoving", true);
-				} else {
-						animate.SetBool ("isMoving", false);
-				}
-				lastPos = curpos;
-				
-				if(!animate.GetCurrentAnimatorStateInfo(0).IsName ("SwingSword"))
-				{
-					animate.SetBool ("shouldSwing", false);
-					swinging = false;
-				}
-				float doSwingSword = Input.GetAxisRaw ("Fire1");
-				if (doSwingSword != 0.0f) {
-					if(swinging != true)
-					{
-						swinging = true; 
-						animate.SetBool ("shouldSwing", true);
+		if (curpos != lastPos) {
+			animate.SetBool ("isMoving", true);
 		} else {
-						swinging = false;
-						animate.SetBool ("shouldSwing", false);
-	
+			animate.SetBool ("isMoving", false);
 		}
+		lastPos = curpos;
+		
+		if(!animate.GetCurrentAnimatorStateInfo(0).IsName ("SwingSword"))
+		{
+			animate.SetBool ("shouldSwing", false);
+			swinging = false;
+		}
+		float doSwingSword = Input.GetAxisRaw ("Fire1");
+		if (doSwingSword != 0.0f) {
+			if(swinging != true)
+			{
+				swinging = true; 
+				animate.SetBool ("shouldSwing", true);
+			}
+		} 
+		
+		
 	}
+	
 
 	void UpdateCamera()
 	{

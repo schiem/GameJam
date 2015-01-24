@@ -23,7 +23,7 @@ public class ColliderDetector : MonoBehaviour {
 		if (coll.gameObject.tag == "Enemy") {
 			Vector2 otherpos = coll.gameObject.transform.position;
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
-			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+			Vector2 force = new Vector2 (dif.x * 00 * -1, dif.y * 00 * -1);
 			knockBack (force);
 			takeDamage(10);
 		}
@@ -34,7 +34,7 @@ public class ColliderDetector : MonoBehaviour {
 		if (coll.gameObject.tag == "Enemy") {
 			Vector2 otherpos = coll.gameObject.transform.position;
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
-			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+			Vector2 force = new Vector2 (dif.x * 00 * -1, dif.y * 00 * -1);
 			knockBack (force);
 			takeDamage(10);
 		}

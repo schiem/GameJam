@@ -5,6 +5,7 @@ public class KeyboardController : MonoBehaviour {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
 	public int health = 100;
+	public MonoBehaviour textBox;
 
 	// Use this for initialization
 	void Start () {
@@ -30,28 +31,37 @@ public class KeyboardController : MonoBehaviour {
 
 		rigidbody2D.AddForce (forcing);
 
+		GetKeys ();
 		UpdateCamera();
 		UpdateAnimations ();
 
 
 	}
 
+	void GetKeys() {
+		if (Input.GetKeyDown ("escape")) {
+			Debug.Log ("escape pressed.");
+			((DescriptionBoxController) textBox).isAnimating = true;
+			((DescriptionBoxController) textBox).popUpStartTime = Time.time;
+		}
+	}
+
 	void UpdateAnimations()
 	{
-				Animator animate = GetComponent<Animator> ();
-		
-				Vector3 curpos = transform.position;
-		
-				if (curpos != lastPos) {
-						animate.SetBool ("isMoving", true);
-				} else {
-						animate.SetBool ("isMoving", false);
-				}
-				lastPos = curpos;
-		
-				float doSwingSword = Input.GetAxisRaw ("Fire1");
-				print (doSwingSword);
-				if (doSwingSword != 0.0f) {
+		Animator animate = GetComponent<Animator> ();
+
+		Vector3 curpos = transform.position;
+
+		if (curpos != lastPos) {
+				animate.SetBool ("isMoving", true);
+		} else {
+				animate.SetBool ("isMoving", false);
+		}
+		lastPos = curpos;
+
+		float doSwingSword = Input.GetAxisRaw ("Fire1");
+		print (doSwingSword);
+		if (doSwingSword != 0.0f) {
 						animate.SetBool ("shouldSwing", true);
 		} else {
 						animate.SetBool ("shouldSwing", false);

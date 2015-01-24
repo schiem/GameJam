@@ -20,7 +20,7 @@ public class MainCharacterController : MonoBehaviour {
 						knockBack (force);
 						//takeDamage(10);
 				}
-		}
+	}
 
 	
 	void knockBack(Vector2 direction)

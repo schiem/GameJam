@@ -49,6 +49,13 @@ public class KeyboardController : MonoBehaviour {
 			((DescriptionBoxController) textBox).isAnimating = true;
 			((DescriptionBoxController) textBox).popUpStartTime = Time.time;
 		}
+		if (Input.GetKeyDown ("return")) {
+			Debug.Log ("return pressed.");
+			DescriptionBoxController tbox = (DescriptionBoxController) textBox;
+			tbox.isDoneAnimating = false;
+			tbox.isAnimating = false;
+			tbox.Hide();
+		}
 	}
 
 	void UpdateAnimations()
@@ -75,11 +82,12 @@ public class KeyboardController : MonoBehaviour {
 					{
 						swinging = true; 
 						animate.SetBool ("shouldSwing", true);
-					}
-				} 
-
+		} else {
+						swinging = false;
+						animate.SetBool ("shouldSwing", false);
 	
 		}
+	}
 
 	void UpdateCamera()
 	{

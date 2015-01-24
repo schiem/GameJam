@@ -4,6 +4,7 @@ using System.Collections;
 public class KeyboardController : MonoBehaviour {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
+	public bool swinging;
 	public int health = 100;
 	public MonoBehaviour textBox;
 
@@ -48,26 +49,28 @@ public class KeyboardController : MonoBehaviour {
 
 	void UpdateAnimations()
 	{
-		Animator animate = GetComponent<Animator> ();
-
-		Vector3 curpos = transform.position;
-
-		if (curpos != lastPos) {
-				animate.SetBool ("isMoving", true);
-		} else {
-				animate.SetBool ("isMoving", false);
-		}
-		lastPos = curpos;
-
-		float doSwingSword = Input.GetAxisRaw ("Fire1");
-		print (doSwingSword);
-		if (doSwingSword != 0.0f) {
+				Animator animate = GetComponent<Animator> ();
+		
+				Vector3 curpos = transform.position;
+		
+				if (curpos != lastPos) {
+						animate.SetBool ("isMoving", true);
+				} else {
+						animate.SetBool ("isMoving", false);
+				}
+				lastPos = curpos;
+		
+				float doSwingSword = Input.GetAxisRaw ("Fire1");
+				print (doSwingSword);
+				if (doSwingSword != 0.0f) {
+					swinging = true; 
 						animate.SetBool ("shouldSwing", true);
 		} else {
+						swinging = false;
 						animate.SetBool ("shouldSwing", false);
-		}
 
 		}
+	}
 
 	void UpdateCamera()
 	{

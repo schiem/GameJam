@@ -9,7 +9,7 @@ public class EnemyBehavior : Pausable {
 	public int attack;
 	public Sprite dead_sprite;
 	// Use this for initialization
-
+	/*
 	public bool paused = false;
 
 	private Vector2 savedVelocity;
@@ -23,14 +23,12 @@ public class EnemyBehavior : Pausable {
 	}
 
 	public override void onResume () {
-		rigidbody2D.isKinematic = false;
-		rigidbody2D.AddForce (savedVelocity, ForceMode2D.Impulse);
-		rigidbody2D.AddTorque (savedAngularVelocity, ForceMode2D.Impulse);
-		paused = false;
+
 	}
+
+*/
 	
 	void Start () {
-		
 	}
 
 	void FixedUpdate () {
@@ -53,49 +51,51 @@ public class EnemyBehavior : Pausable {
 	}
 	
 	void OnTriggerEnter2D(Collider2D coll) {
-		
-		if (coll.gameObject.tag == "Sword" && key_control.swinging) {
-			Vector2 otherpos = coll.gameObject.transform.position;
-			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
-			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
-			knockBack (force);
-			ColliderDetector collider = playerPtr.GetComponent<ColliderDetector>();
-			if(collider != null)
-			{
-				takeDamage(collider.attack);
+		if(!paused) {
+			if (coll.gameObject.tag == "Sword" && key_control.swinging) {
+				Vector2 otherpos = coll.gameObject.transform.position;
+				var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+				Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+				knockBack (force);
+				ColliderDetector collider = playerPtr.GetComponent<ColliderDetector>();
+				if(collider != null)
+				{
+					takeDamage(collider.attack);
+				}
 			}
-		}
-		else if(coll.gameObject.tag == "Tesla")
-		{
-			Vector2 otherpos = coll.gameObject.transform.position;
-			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
-			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
-			knockBack (force);
-			takeDamage(500);
+			else if(coll.gameObject.tag == "Tesla")
+			{
+				Vector2 otherpos = coll.gameObject.transform.position;
+				var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+				Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+				knockBack (force);
+				takeDamage(500);
+			}
 		}
 	}
 	
 	void OnTriggerStay2D(Collider2D coll) {
-		
-		if (coll.gameObject.tag == "Sword" && key_control.swinging) {
-			Vector2 otherpos = coll.gameObject.transform.position;
-			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
-			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
-			knockBack (force);
-			ColliderDetector collider = playerPtr.GetComponent<ColliderDetector>();
-			if(collider != null)
+		if(!paused) {
+			if (coll.gameObject.tag == "Sword" && key_control.swinging) {
+				Vector2 otherpos = coll.gameObject.transform.position;
+				var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+				Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+				knockBack (force);
+				ColliderDetector collider = playerPtr.GetComponent<ColliderDetector>();
+				if(collider != null)
+				{
+					takeDamage(collider.attack);
+				}
+			}
+			else if(coll.gameObject.tag == "Tesla")	
 			{
-				takeDamage(collider.attack);
+				Vector2 otherpos = coll.gameObject.transform.position;
+				var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+				Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+				knockBack (force);
+				takeDamage(500);
 			}
 		}
-		else if(coll.gameObject.tag == "Tesla")	
-		{
-			Vector2 otherpos = coll.gameObject.transform.position;
-			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
-			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
-			knockBack (force);
-			takeDamage(500);
-			}
 	}
 	
 	

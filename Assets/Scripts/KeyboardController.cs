@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KeyboardController : MonoBehaviour {
+public class KeyboardController : Pausable {
 	public float speed = 100.0f;
 	public Vector3 lastPos;
 	public bool swinging;
 	public MonoBehaviour textBox;
+
+	/*
+	public Vector2 savedVelocity;
+	public float savedAngularVelocity;
+	*/	
 	public AudioClip swingSound;
 		
 	// Use this for initialization
@@ -18,46 +23,57 @@ public class KeyboardController : MonoBehaviour {
 	
 	}
 
-
 	void FixedUpdate(){
-	
-		
-		Vector2 forcing = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
-		float current_magnitude = forcing.magnitude;
-		if (current_magnitude > 1) {
-			float ratio = (1 / current_magnitude);
-			forcing.Scale(new Vector2(ratio, ratio));
-		}
+		if (!paused) {
+			Vector2 forcing = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
+			float current_magnitude = forcing.magnitude;
+			if (current_magnitude > 1) {
+					float ratio = (1 / current_magnitude);
+					forcing.Scale (new Vector2 (ratio, ratio));
+			}
 
 		forcing *= speed;
 
-		rigidbody2D.AddForce (forcing);
+			rigidbody2D.AddForce (forcing);
+			UpdateAnimations ();
+			UpdateCamera ();
+		}
 
 		GetKeys ();
-		UpdateCamera();
-		UpdateAnimations ();
+	}
 
+	void showTextBoxAndPause() {
+		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
+		Object[] objects = FindObjectsOfType(typeof(Pausable));
+		foreach (var go in objects) {
+			((Pausable) go).onPause();
+		}
+		tbox.doMessage("The quick brown fox jumps over the lazy dog.");
+	}
 
+	void destroyTextBoxAndResume() {
+		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
+		Object[] objects = FindObjectsOfType(typeof(Pausable));
+		foreach (var go in objects) {
+			((Pausable) go).onResume();
+		}
+		
+		tbox.isDoneAnimating = false;
+		tbox.isAnimating = false;
+		tbox.Hide();
 	}
 
 	void GetKeys() {
 		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
 		if (Input.GetKeyDown ("escape")) {
-			Object[] objects = FindObjectsOfType(typeof(Pausable));
-			foreach (var go in objects) {
-				((Pausable) go).onPause();
+			if(tbox.isDoneAnimating) {
+				destroyTextBoxAndResume();
+			} else {
+				showTextBoxAndPause();
 			}
-			tbox.doMessage("The quick brown fox jumps over the lazy dog.");
 		}
 		if (Input.GetKeyDown ("return")) {
-			Object[] objects = FindObjectsOfType(typeof(Pausable));
-			foreach (var go in objects) {
-				((Pausable) go).onResume();
-			}
-
-			tbox.isDoneAnimating = false;
-			tbox.isAnimating = false;
-			tbox.Hide();
+			destroyTextBoxAndResume();
 		}
 	}
 

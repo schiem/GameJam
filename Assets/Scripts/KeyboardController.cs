@@ -29,6 +29,8 @@ public class KeyboardController : Pausable {
 			levelFour (tbox);
 		} else if (currentLevel == 5) {
 			levelFive (tbox);
+		} else if (currentLevel == 6) {
+			levelSix (tbox);
 		} else if (currentLevel == 7) {
 			levelSeven(tbox);
 		}	
@@ -126,6 +128,15 @@ public class KeyboardController : Pausable {
 		"Nuts."
 		});
 		Queue<Color> colors = new Queue<Color>(new[] {black, red, black, red, black, red, black, red, black, red, black});
+		tbox.displayMultipleMessages(messages, colors);
+	}
+	
+	void levelSix(DescriptionBoxController tbox) {
+		Color red = new Color(171f/255f, 0, 0, 1);
+		Color black = new Color(0, 0, 0, 1);
+		Queue<string> messages = new Queue<string>(new[] 
+		                                           {"You have defeated Sovereign, in the process forcing all humans to return from the afterlife and condemning yourself to this room for eternity."});
+		Queue<Color> colors = new Queue<Color>(new[] {black});
 		tbox.displayMultipleMessages(messages, colors);
 	}
 	

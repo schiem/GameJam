@@ -8,6 +8,8 @@ public class EnemyBehavior : Pausable {
 	public int health;
 	public int attack;
 	public Sprite dead_sprite;
+	public AudioClip random_sound;
+	public AudioClip death_sound;
 	// Use this for initialization
 	/*
 	public bool paused = false;
@@ -42,7 +44,11 @@ public class EnemyBehavior : Pausable {
 				FaceCharacter ();
 			}
 		}
-
+		if(Random.Range(1, 1000) == 5)
+		{
+			AudioSource source = GetComponent<AudioSource>();
+			source.PlayOneShot(random_sound);
+		}
 	}
 
 	// Update is called once per frame
@@ -124,6 +130,8 @@ public class EnemyBehavior : Pausable {
 	
 	void Die()
 	{
+		AudioSource source = GetComponent<AudioSource>();
+		source.PlayOneShot(death_sound);
 		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		collider2D.enabled = false;
 		GameObject.Destroy(rigidbody2D);

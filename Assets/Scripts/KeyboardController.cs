@@ -186,6 +186,9 @@ public class KeyboardController : Pausable {
 
 	void GetKeys() {
 		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
+		if(Input.GetKeyDown("q")) {
+			Application.Quit();
+		}
 		if (Input.GetKeyDown ("escape")) {
 			if(tbox.isDoneAnimating || tbox.isAnimating) {
 				tbox.destroyTextBoxAndResume();

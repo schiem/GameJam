@@ -19,7 +19,6 @@ public class ColliderDetector : MonoBehaviour {
 		}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		KeyboardController controller = GetComponent<KeyboardController>();
 		
 		if (coll.gameObject.tag == "Enemy") {
 			Vector2 otherpos = coll.gameObject.transform.position;
@@ -39,7 +38,6 @@ public class ColliderDetector : MonoBehaviour {
 		}
 	}
 	void OnTriggerStay2D(Collider2D coll) {
-		KeyboardController controller = GetComponent<KeyboardController>();
 		
 		if (coll.gameObject.tag ==  "Enemy") {
 			Vector2 otherpos = coll.gameObject.transform.position;

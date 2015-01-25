@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class KeyboardController : Pausable {
 	public float speed = 100.0f;
@@ -41,7 +42,7 @@ public class KeyboardController : Pausable {
 
 		GetKeys ();
 	}
-
+/*
 	void showTextBoxAndPause() {
 		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
 		Object[] objects = FindObjectsOfType(typeof(Pausable));
@@ -62,18 +63,25 @@ public class KeyboardController : Pausable {
 		tbox.isAnimating = false;
 		tbox.Hide();
 	}
+	*/
 
 	void GetKeys() {
 		DescriptionBoxController tbox = (DescriptionBoxController) textBox;
 		if (Input.GetKeyDown ("escape")) {
-			if(tbox.isDoneAnimating) {
-				destroyTextBoxAndResume();
+			if(tbox.isDoneAnimating || tbox.isAnimating) {
+				tbox.destroyTextBoxAndResume();
 			} else {
-				showTextBoxAndPause();
+				/*
+				tbox.showTextBoxAndPause("     PAUSED     ");
+				*/
+				Queue<string> messages = new Queue<string>(new[] {"A dark night in a city that knows how to keep its secrets.",
+															      "But one man is still trying to find the answers to life's persistent questions:",
+															      "Guy noir, private eye."});
+			    tbox.displayMultipleMessages(messages);
 			}
 		}
 		if (Input.GetKeyDown ("return")) {
-			destroyTextBoxAndResume();
+			tbox.destroyTextBoxAndResume();
 		}
 	}
 

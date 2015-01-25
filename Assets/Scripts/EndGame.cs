@@ -12,6 +12,7 @@ public class EndGame : MonoBehaviour {
 	void Update () {
 		if(!IsEnemy ())
 		{
+			System.Threading.Thread.Sleep(3000);
 			Application.LoadLevel("EndGame1");
 		}
 		else if(!isPlayer())

@@ -9225,6 +9225,7 @@ MonoBehaviour:
   paused: 0
   health: 100
   attack: 10
+  die: {fileID: 8300000, guid: 19d6675d166bc4c0f98cbc93241bfb72, type: 3}
 --- !u!61 &1100567584
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13441,6 +13442,10 @@ Prefab:
       propertyPath: swingSound
       value: 
       objectReference: {fileID: 8300000, guid: b0093c51f869040ceb3805328cbda8f7, type: 3}
+    - target: {fileID: 11477134, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
+      propertyPath: die
+      value: 
+      objectReference: {fileID: 8300000, guid: 19d6675d166bc4c0f98cbc93241bfb72, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
   m_RootGameObject: {fileID: 1100567581}

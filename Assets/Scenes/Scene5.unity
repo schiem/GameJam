@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 10.5, y: .25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1001 &146471242
 Prefab:
   m_ObjectHideFlags: 0
@@ -457,6 +457,7 @@ GameObject:
   - 61: {fileID: 976749966}
   - 114: {fileID: 976749971}
   - 82: {fileID: 976749972}
+  - 95: {fileID: 976749973}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -510,9 +511,9 @@ MonoBehaviour:
   playerPtr: {fileID: 2103185844}
   health: 1000
   attack: 40
-  dead_sprite: {fileID: 21300000, guid: c4a4c1755d6f54e95a90843199185df0, type: 3}
+  dead_sprite: {fileID: 21300000, guid: 690b92ba403014fa79f4c7f5de18615d, type: 3}
   random_sound: {fileID: 0}
-  death_sound: {fileID: 8300000, guid: 693ad8924200f4cfcb7bb9c80abb22ed, type: 3}
+  death_sound: {fileID: 8300000, guid: 4b8dc2e83bed241f08f0d49c4134af63, type: 3}
 --- !u!212 &976749969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -534,7 +535,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 977717605
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 690b92ba403014fa79f4c7f5de18615d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd75f7120442f46b6800d680585e17b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &976749970
 Transform:
@@ -617,6 +618,21 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &976749973
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976749965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5f76f7b3b96845c080a44cf85c960c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &998959153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1606,7 @@ MonoBehaviour:
   paused: 0
   health: 100
   attack: 10
+  die: {fileID: 8300000, guid: 19d6675d166bc4c0f98cbc93241bfb72, type: 3}
 --- !u!61 &2103185847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1682,11 +1699,11 @@ Transform:
   m_PrefabInternal: {fileID: 2140742688}
   m_GameObject: {fileID: 2103185844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.52237439, y: -1.57357454, z: 0}
+  m_LocalPosition: {x: -3.24000001, y: -.0399999991, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!82 &2103185853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1701,7 +1718,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Priority: 128
+  Priority: 255
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1881,11 +1898,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 477132, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.52237439
+      value: -3.24000001
       objectReference: {fileID: 0}
     - target: {fileID: 477132, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.57357454
+      value: -.0399999991
       objectReference: {fileID: 0}
     - target: {fileID: 477132, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1919,6 +1936,10 @@ Prefab:
       propertyPath: swingSound
       value: 
       objectReference: {fileID: 8300000, guid: b0093c51f869040ceb3805328cbda8f7, type: 3}
+    - target: {fileID: 11477134, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
+      propertyPath: die
+      value: 
+      objectReference: {fileID: 8300000, guid: 19d6675d166bc4c0f98cbc93241bfb72, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
   m_RootGameObject: {fileID: 2103185844}

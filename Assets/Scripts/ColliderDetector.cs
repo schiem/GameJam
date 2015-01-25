@@ -4,6 +4,8 @@ using System.Collections;
 public class ColliderDetector : Pausable {
 	public int health = 100;
 	public int attack = 10;
+	public AudioClip die;
+	
 	// Use this for initialization
 	public Hashtable scenes = new Hashtable();
 	void Start () {
@@ -87,6 +89,10 @@ public class ColliderDetector : Pausable {
 		health = health - amount;
 		print(health);
 		if (health <= 0) {
+			
+			AudioSource source = GetComponent<AudioSource>();
+			source.PlayOneShot(die, 10.0f);
+			System.Threading.Thread.Sleep(1000);
 			Die ();
 			}
 		}
@@ -95,5 +101,7 @@ public class ColliderDetector : Pausable {
 	{
 		Application.LoadLevel("MainScreen");
 		}
+		
+
 
 }

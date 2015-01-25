@@ -26,8 +26,10 @@ public class Teleport : MonoBehaviour {
 		}
 		*/
 		EnemyBehavior enem = GetComponent<EnemyBehavior>();
-		
-		float speed_gain = (float)500/(enem.health + 200);
-		enem.maxSpeed = speed_gain * 5;
+		if(enem != null)
+		{
+			float speed_gain = (float)500/(enem.health + 200);
+			enem.maxSpeed = speed_gain * 5;
+		}
 	}
 }

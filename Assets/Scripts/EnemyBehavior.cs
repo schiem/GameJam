@@ -38,8 +38,11 @@ public class EnemyBehavior : Pausable {
 		renderer.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		var step = maxSpeed * Time.deltaTime;
 		if (!paused) {
-			transform.position = Vector2.MoveTowards (transform.position, playerPtr.transform.position, step);
-			FaceCharacter ();
+			if(Vector3.Distance (transform.position, playerPtr.transform.position) < 5)
+			{
+				transform.position = Vector2.MoveTowards (transform.position, playerPtr.transform.position, step);
+				FaceCharacter ();
+			}
 		}
 
 	}

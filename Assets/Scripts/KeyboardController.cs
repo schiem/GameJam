@@ -6,7 +6,8 @@ public class KeyboardController : MonoBehaviour {
 	public Vector3 lastPos;
 	public bool swinging;
 	public MonoBehaviour textBox;
-
+	public AudioClip swingSound;
+		
 	// Use this for initialization
 	void Start () {
 	
@@ -82,6 +83,8 @@ public class KeyboardController : MonoBehaviour {
 		if (doSwingSword != 0.0f) {
 			if(swinging != true)
 			{
+				AudioSource source = GetComponent<AudioSource>();
+				source.PlayOneShot(swingSound);
 				swinging = true; 
 				animate.SetBool ("shouldSwing", true);
 			}

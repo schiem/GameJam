@@ -15,12 +15,15 @@ public class DescriptionBoxController : MonoBehaviour {
 	private float screenHeight;
 	public float height;
 	public float width;
-	private static float X_MARGIN = 0.25f;
-	private static float Y_MARGIN = -0.2f;
+	private static float X_MARGIN = 0.40f;
+	private static float Y_MARGIN = -0.24f;
 
 	private int MAX_STRING_LENGTH = 36;
 	private Queue<string> messageQueue;
-
+	private Queue<Color> colorQueue;
+	
+	private float waitStartTime;
+	private float timeToWait;
 
 
 	// Use this for initialization
@@ -30,6 +33,7 @@ public class DescriptionBoxController : MonoBehaviour {
 		screenHeight = Screen.height;
 		width = renderer.bounds.size.x;
 		height = renderer.bounds.size.y;
+		
 
 
 	}
@@ -42,10 +46,19 @@ public class DescriptionBoxController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(waitStartTime != 0) {
+			if(Time.time - waitStartTime > timeToWait) {
+				waitStartTime = 0;
+				resumeStuff();
+			}
+			return;
+		}
+	
 		if(messageQueue != null && !isDoneAnimating && !isAnimating) {
 			if(messageQueue.Count != 0) {
 				string m = messageQueue.Dequeue();
-				showTextBoxAndPause(m);
+				Color c = colorQueue.Dequeue();
+				showTextBoxAndPause(m, c);
 			}
 		}
 		//doMessage ("yolo");
@@ -72,7 +85,7 @@ public class DescriptionBoxController : MonoBehaviour {
 	}
 
 	float posFunc(float t, float target) {
-		float calc = (-10 / t) + (target) + 10;
+		float calc = (-10 / (t+0.0001f)) + (target) + 10;
 		if (calc < target) {
 			return calc;
 		} else {
@@ -83,7 +96,7 @@ public class DescriptionBoxController : MonoBehaviour {
 	}
 
 	void popUp () {
-		Debug.Log ("popupstarttime:" + popUpStartTime.ToString());
+		//Debug.Log ("popupstarttime:" + popUpStartTime.ToString());
 		float vert = posFunc ((Time.time) - popUpStartTime, screenHeight / 5);
 		Vector3 newpos = new Vector3 (screenWidth / 2, vert, 0);
 		Vector3 transformed = cam.ScreenToWorldPoint (newpos);
@@ -91,7 +104,8 @@ public class DescriptionBoxController : MonoBehaviour {
 		transform.position = transformed;
 	}
 
-	public void doMessage (string message) {
+	public void doMessage (string message, Color colorToWrite) {
+		
 		if(isDoneAnimating || isAnimating) {
 			isDoneAnimating = false;
 			isAnimating = false;
@@ -105,31 +119,49 @@ public class DescriptionBoxController : MonoBehaviour {
 		Vector3 text_newPos = new Vector3 (text_x_pos, text_y_pos, transform.position.z);
 
 		textCopy = (TextMesh)Instantiate (theText, text_newPos, Quaternion.identity);
+		textCopy.color = colorToWrite;
+		Debug.Log (colorToWrite.r.ToString() +  message.ToString ());
 		textCopy.renderer.enabled = true;
 		textCopy.text = splitMessageString(message);
-	}
 
-	public void showTextBoxAndPause(string message) {
+	}
+	
+	public void pauseStuff() {
 		Object[] objects = FindObjectsOfType(typeof(Pausable));
 		foreach (var go in objects) {
 			((Pausable) go).onPause();
 		}
-		doMessage(message);
 	}
 	
-	public void destroyTextBoxAndResume() {
+	public void resumeStuff() {
 		Object[] objects = FindObjectsOfType(typeof(Pausable));
 		foreach (var go in objects) {
 			((Pausable) go).onResume();
 		}
-		
+	}
+
+	public void showTextBoxAndPause(string message, Color color) {
+		if(message == "pause") {
+			timeToWait = 1.2f;
+			waitStartTime = Time.time;
+			pauseStuff ();
+			return;
+		}
+		pauseStuff ();
+		doMessage(message, color);
+	}
+	
+	public void destroyTextBoxAndResume() {
+		if(waitStartTime != 0) return;
+		resumeStuff ();
 		isDoneAnimating = false;
 		isAnimating = false;
 		Hide();
 		
-		if(messageQueue.Count != 0) {
+		if(messageQueue != null && messageQueue.Count != 0) {
 			string m = messageQueue.Dequeue();
-			showTextBoxAndPause(m);
+			Color c = colorQueue.Dequeue();
+			showTextBoxAndPause(m, c);
 		}
 	}
 
@@ -153,7 +185,8 @@ public class DescriptionBoxController : MonoBehaviour {
 		return newmessage;
 	}
 	
-	public void displayMultipleMessages(Queue<string> messages) {
-		messageQueue = messages;
+	public void displayMultipleMessages(Queue<string> messages, Queue<Color> colors) {
+		messageQueue = new Queue<string>(messages);
+		colorQueue = new Queue<Color>(colors);
 	}
 }

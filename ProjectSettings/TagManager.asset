@@ -6,6 +6,8 @@ TagManager:
   - Enemy
   - MainChar
   - Sword
+  - Tesla
+  - Background
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

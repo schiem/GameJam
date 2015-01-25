@@ -34,7 +34,19 @@ public class EnemyBehavior : MonoBehaviour {
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
 			knockBack (force);
-			takeDamage(attack);
+			ColliderDetector collider = playerPtr.GetComponent<ColliderDetector>();
+			if(collider != null)
+			{
+				takeDamage(collider.attack);
+			}
+		}
+		else if(coll.gameObject.tag == "Tesla")
+		{
+			Vector2 otherpos = coll.gameObject.transform.position;
+			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+			knockBack (force);
+			takeDamage(500);
 		}
 	}
 	
@@ -45,8 +57,20 @@ public class EnemyBehavior : MonoBehaviour {
 			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
 			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
 			knockBack (force);
-			takeDamage(attack);
+			ColliderDetector collider = playerPtr.GetComponent<ColliderDetector>();
+			if(collider != null)
+			{
+				takeDamage(collider.attack);
+			}
 		}
+		else if(coll.gameObject.tag == "Tesla")	
+		{
+			Vector2 otherpos = coll.gameObject.transform.position;
+			var dif = new Vector2(otherpos.x - transform.position.x, otherpos.y - transform.position.y);
+			Vector2 force = new Vector2 (dif.x * 2000 * -1, dif.y * 2000 * -1);
+			knockBack (force);
+			takeDamage(500);
+			}
 	}
 	
 	

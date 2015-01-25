@@ -18,7 +18,8 @@ public class DescriptionBoxController : MonoBehaviour {
 	private static float X_MARGIN = 0.25f;
 	private static float Y_MARGIN = -0.2f;
 
-	public int MAX_STRING_LENGTH = 31;
+	private int MAX_STRING_LENGTH = 36;
+	private Queue<string> messageQueue;
 
 
 
@@ -41,6 +42,12 @@ public class DescriptionBoxController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(messageQueue != null && !isDoneAnimating && !isAnimating) {
+			if(messageQueue.Count != 0) {
+				string m = messageQueue.Dequeue();
+				showTextBoxAndPause(m);
+			}
+		}
 		//doMessage ("yolo");
 		if (isAnimating) {
 			renderer.enabled = true;
@@ -76,6 +83,7 @@ public class DescriptionBoxController : MonoBehaviour {
 	}
 
 	void popUp () {
+		Debug.Log ("popupstarttime:" + popUpStartTime.ToString());
 		float vert = posFunc ((Time.time) - popUpStartTime, screenHeight / 5);
 		Vector3 newpos = new Vector3 (screenWidth / 2, vert, 0);
 		Vector3 transformed = cam.ScreenToWorldPoint (newpos);
@@ -101,6 +109,30 @@ public class DescriptionBoxController : MonoBehaviour {
 		textCopy.text = splitMessageString(message);
 	}
 
+	public void showTextBoxAndPause(string message) {
+		Object[] objects = FindObjectsOfType(typeof(Pausable));
+		foreach (var go in objects) {
+			((Pausable) go).onPause();
+		}
+		doMessage(message);
+	}
+	
+	public void destroyTextBoxAndResume() {
+		Object[] objects = FindObjectsOfType(typeof(Pausable));
+		foreach (var go in objects) {
+			((Pausable) go).onResume();
+		}
+		
+		isDoneAnimating = false;
+		isAnimating = false;
+		Hide();
+		
+		if(messageQueue.Count != 0) {
+			string m = messageQueue.Dequeue();
+			showTextBoxAndPause(m);
+		}
+	}
+
 	public string splitMessageString(string message) {
 		List<string> words = new List<string> (message.Split (' '));
 		string newmessage = "";
@@ -119,5 +151,9 @@ public class DescriptionBoxController : MonoBehaviour {
 		}
 
 		return newmessage;
+	}
+	
+	public void displayMultipleMessages(Queue<string> messages) {
+		messageQueue = messages;
 	}
 }

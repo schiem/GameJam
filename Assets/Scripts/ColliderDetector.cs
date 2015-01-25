@@ -5,8 +5,14 @@ public class ColliderDetector : Pausable {
 	public int health = 100;
 	public int attack = 10;
 	// Use this for initialization
+	public Hashtable scenes = new Hashtable();
 	void Start () {
-	
+		scenes.Add (1, "scene1");
+		scenes.Add (2, "scene2");
+		scenes.Add (3, "scene3");
+		scenes.Add (4, "scene4");
+		scenes.Add (5, "scene5");
+		scenes.Add (-1, "MainScreen");
 	}
 	
 	// Update is called once per frame
@@ -37,7 +43,17 @@ public class ColliderDetector : Pausable {
 				takeDamage(500);
 			}
 		}
+		else if(coll.gameObject.tag == "Door")
+		{
+		print ("Here");
+			OpenDoor door = coll.gameObject.GetComponent<OpenDoor>();
+			if(door != null)
+			{
+				Application.LoadLevel((string)scenes[door.level + 1]);
+			}
+		}
 	}
+	/**
 	void OnTriggerStay2D(Collider2D coll) {
 		if(!paused) {
 			if (coll.gameObject.tag ==  "Enemy") {
@@ -58,6 +74,7 @@ public class ColliderDetector : Pausable {
 			}
 		}
 	}
+	*/
 
 	void knockBack(Vector2 direction){
 		renderer.material.color = Color.red;
@@ -75,6 +92,7 @@ public class ColliderDetector : Pausable {
 
 	void Die()
 	{
+		Application.LoadLevel("MainScreen");
 		}
 
 }

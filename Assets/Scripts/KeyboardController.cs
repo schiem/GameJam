@@ -11,8 +11,9 @@ public class KeyboardController : Pausable {
 	/*
 	public Vector2 savedVelocity;
 	public float savedAngularVelocity;
-	public bool paused;
-*/
+	*/	
+	public AudioClip swingSound;
+		
 	// Use this for initialization
 	void Start () {
 	
@@ -32,7 +33,7 @@ public class KeyboardController : Pausable {
 					forcing.Scale (new Vector2 (ratio, ratio));
 			}
 
-			forcing *= speed;
+		forcing *= speed;
 
 			rigidbody2D.AddForce (forcing);
 			UpdateAnimations ();
@@ -106,6 +107,8 @@ public class KeyboardController : Pausable {
 		if (doSwingSword != 0.0f) {
 			if(swinging != true)
 			{
+				AudioSource source = GetComponent<AudioSource>();
+				source.PlayOneShot(swingSound);
 				swinging = true; 
 				animate.SetBool ("shouldSwing", true);
 			}

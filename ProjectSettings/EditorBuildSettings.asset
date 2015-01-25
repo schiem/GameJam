@@ -17,3 +17,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene5.unity
   - enabled: 1
     path: Assets/Scenes/MainScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/EndGame1.unity
+  - enabled: 1
+    path: Assets/Scenes/EndGame2.unity

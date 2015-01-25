@@ -13,6 +13,8 @@ public class ColliderDetector : Pausable {
 		scenes.Add (4, "scene4");
 		scenes.Add (5, "scene5");
 		scenes.Add (-1, "MainScreen");
+		scenes.Add (6, "EndGame1");
+		scenes.Add (7, "EndGame2");
 	}
 	
 	// Update is called once per frame
@@ -44,7 +46,6 @@ public class ColliderDetector : Pausable {
 			}
 			else if(coll.gameObject.tag == "Door")
 			{
-				print ("Here");
 				OpenDoor door = coll.gameObject.GetComponent<OpenDoor>();
 				if(door != null)
 				{

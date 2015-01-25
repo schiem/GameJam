@@ -133,13 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &71405523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ Transform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
 --- !u!1 &73794239
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,13 +234,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 5
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 50
   attack: 5
   dead_sprite: {fileID: 21300000, guid: 45b0b4e77659347eeb92e045abb92a60, type: 3}
-  paused: 0
 --- !u!212 &73794243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -385,13 +385,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 5
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 50
   attack: 5
   dead_sprite: {fileID: 21300000, guid: 45b0b4e77659347eeb92e045abb92a60, type: 3}
-  paused: 0
 --- !u!212 &154851944
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -486,13 +486,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &183580693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1502,7 +1502,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 30
 --- !u!1 &915371259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5869bea98e4df4da78df6c8261efb45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   health: 100
   attack: 10
 --- !u!61 &1141969051
@@ -1887,10 +1888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ff08f04d0e047649a00b54c713c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   speed: 150
   lastPos: {x: 0, y: 0, z: 0}
   swinging: 0
   textBox: {fileID: 1475380857}
+  swingSound: {fileID: 0}
 --- !u!212 &1141969055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2037,13 +2040,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &1288252054
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2078,7 +2081,7 @@ Transform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 29
 --- !u!1 &1366029072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,13 +2141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 5
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 50
   attack: 5
   dead_sprite: {fileID: 21300000, guid: 45b0b4e77659347eeb92e045abb92a60, type: 3}
-  paused: 0
 --- !u!212 &1366029076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2588,13 +2591,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &1445389638
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2629,7 +2632,7 @@ Transform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 28
 --- !u!1 &1469894515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3312,13 +3315,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &1837539814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3353,7 +3356,7 @@ Transform:
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
 --- !u!1001 &1971966546
 Prefab:
   m_ObjectHideFlags: 0
@@ -3636,13 +3639,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 5
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 50
   attack: 5
   dead_sprite: {fileID: 21300000, guid: 45b0b4e77659347eeb92e045abb92a60, type: 3}
-  paused: 0
 --- !u!212 &2075877476
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3737,13 +3740,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 5
   key_control: {fileID: 1141969054}
   playerPtr: {fileID: 1141969048}
   health: 50
   attack: 5
   dead_sprite: {fileID: 21300000, guid: 45b0b4e77659347eeb92e045abb92a60, type: 3}
-  paused: 0
 --- !u!212 &2089877630
 SpriteRenderer:
   m_ObjectHideFlags: 0

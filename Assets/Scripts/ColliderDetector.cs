@@ -42,14 +42,14 @@ public class ColliderDetector : Pausable {
 				knockBack (force);
 				takeDamage(500);
 			}
-		}
-		else if(coll.gameObject.tag == "Door")
-		{
-		print ("Here");
-			OpenDoor door = coll.gameObject.GetComponent<OpenDoor>();
-			if(door != null)
+			else if(coll.gameObject.tag == "Door")
 			{
-				Application.LoadLevel((string)scenes[door.level + 1]);
+				print ("Here");
+				OpenDoor door = coll.gameObject.GetComponent<OpenDoor>();
+				if(door != null)
+				{
+					Application.LoadLevel((string)scenes[door.level + 1]);
+				}
 			}
 		}
 	}

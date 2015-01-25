@@ -194,13 +194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &68062252
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -366,6 +366,7 @@ GameObject:
   - 61: {fileID: 137876921}
   - 114: {fileID: 137876922}
   - 61: {fileID: 137876923}
+  - 82: {fileID: 137876924}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: MainChar
@@ -420,10 +421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ff08f04d0e047649a00b54c713c4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   speed: 150
   lastPos: {x: 0, y: 0, z: 0}
   swinging: 0
   textBox: {fileID: 1376086621}
+  swingSound: {fileID: 8300000, guid: 4fcd34a2289bd493d8023ed7a83cee72, type: 3}
 --- !u!95 &137876919
 Animator:
   serializedVersion: 3
@@ -480,6 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5869bea98e4df4da78df6c8261efb45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   health: 100
   attack: 10
 --- !u!61 &137876923
@@ -494,6 +498,64 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .173491657, y: .22232765}
   m_Center: {x: -.00406956673, y: -.00203484297}
+--- !u!82 &137876924
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137876915}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &147472888
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,13 +612,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &147472892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -709,13 +771,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &296043744
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -966,13 +1028,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 3
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &550332732
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1304,6 +1366,10 @@ Prefab:
       propertyPath: textBox
       value: 
       objectReference: {fileID: 1376086621}
+    - target: {fileID: 11477132, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
+      propertyPath: swingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fcd34a2289bd493d8023ed7a83cee72, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7243a651c24a4a5db911628eea6dbc4, type: 2}
   m_RootGameObject: {fileID: 137876915}
@@ -1417,13 +1483,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &982269819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1878,13 +1944,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &1364750985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2101,13 +2167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!61 &1544234520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2254,13 +2320,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &1573209902
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2550,13 +2616,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &1758405020
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3084,13 +3150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853f9a61ce8e54081af301280b7f9c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   maxSpeed: 2
   key_control: {fileID: 137876918}
   playerPtr: {fileID: 137876915}
   health: 100
   attack: 20
   dead_sprite: {fileID: 21300000, guid: c01f44f5d034b429c954eb4edf904918, type: 3}
-  paused: 0
 --- !u!212 &2046563561
 SpriteRenderer:
   m_ObjectHideFlags: 0

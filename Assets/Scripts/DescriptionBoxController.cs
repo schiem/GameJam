@@ -24,6 +24,8 @@ public class DescriptionBoxController : MonoBehaviour {
 	
 	private float waitStartTime;
 	private float timeToWait;
+	
+	public AudioClip nuts;
 
 
 	// Use this for initialization
@@ -146,6 +148,10 @@ public class DescriptionBoxController : MonoBehaviour {
 			waitStartTime = Time.time;
 			pauseStuff ();
 			return;
+		}
+		
+		if (message == "Nuts." || message == "Nuts!") {
+			audio.PlayOneShot(nuts, 5.0f);
 		}
 		pauseStuff ();
 		doMessage(message, color);

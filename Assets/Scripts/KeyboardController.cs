@@ -118,11 +118,14 @@ public class KeyboardController : Pausable {
 		"Didn’t think I’d make it this far, huh?  And I got through all your underwear and that divination guy.",
 		"WHAT? YOU DESTROYED ALL OF MY UNDERLINGS AND DIVINITY, MY SON!?",
 		"Your son? Ah... this is awkward. But really, I did say I was going to stop you and all.",
-		"FOOL! You will pay for this! I will put an end to you once and for al!",
+		"YOU NOW HAVE A CHOICE: YOU MAY EITHER DIE AND GO TO HELL, OR KILL ME AND BRING EVERYONE BACK FROM HEAVEN TO LIVE HERE IN MISERY.",
+		"Nuts! What do we do now?",
+		"FOOL! You will pay for this! I will put an end to you once and for all!",
 		"But I have a sword!",
 		"YEEEEEAAAARRRGGHH!!!",
+		"Nuts."
 		});
-		Queue<Color> colors = new Queue<Color>(new[] {black, red, black, red, black, red, black, red});
+		Queue<Color> colors = new Queue<Color>(new[] {black, red, black, red, black, red, black, red, black, red, black});
 		tbox.displayMultipleMessages(messages, colors);
 	}
 	
@@ -130,7 +133,7 @@ public class KeyboardController : Pausable {
 		Color red = new Color(171f/255f, 0, 0, 1);
 		Color black = new Color(0, 0, 0, 1);
 		Queue<string> messages = new Queue<string>(new[] 
-		{"    WELCOME TO HELL    "});
+		{"                                                                                     WELCOME TO HELL    "});
 		Queue<Color> colors = new Queue<Color>(new[] {red});
 		tbox.displayMultipleMessages(messages, colors);
 	}
